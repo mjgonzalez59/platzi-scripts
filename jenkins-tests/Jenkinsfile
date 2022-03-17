@@ -14,10 +14,18 @@ pipeline {
         bat('cd jenkins-tests && npm install')
       }
     }
+    
     stage('Run tests') {
       steps {
         bat('cd jenkins-tests && npm test')
       }
     }
+    
+    stage('Run remote'){
+        steps {
+            build wait: false, job: 'parameterized', parameters: [string(name: 'ROOT_ID', value: '$BUILD_ID')]
+        }
+    }
+    
   }
 }
