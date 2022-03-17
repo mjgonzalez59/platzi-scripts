@@ -11,12 +11,12 @@ pipeline {
   stages {
     stage('Install dependencies') {
       steps {
-        cmd_exec('cd jenkins-tests && npm install')
+        bat('cd jenkins-tests && npm install')
       }
     }
     stage('Run tests') {
       steps {
-        cmd_exec('cd jenkins-tests && npm test')
+        bat('cd jenkins-tests && npm test')
       }
     }
   }
