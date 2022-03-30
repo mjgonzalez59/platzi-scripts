@@ -9,12 +9,6 @@ pipeline {
         sh 'echo "This is my first step"'
       }
     }
-    when {
-      anyOf {
-        branch 'develop';
-        branch 'test'
-      }
-    }
     stage('Test') {
       when {
         branch 'production'
