@@ -12,10 +12,6 @@ pipeline {
     stage('Test') {
       when {
         not { branch 'production' }
-        anyOf {
-          environment name: 'DEPLOY_TO', value: 'prod'
-          environment name: 'DEPLOY_TO', value: 'test'
-        }
       }
       steps {
         sh 'echo "This is my Test step"'
