@@ -28,8 +28,14 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh 'echo "This is my Deploy step"'
-        sh './dev-deploy.sh'
+        sh 'echo "This is my Deploy step 1"'
+        retry(3) {
+          sh 'echo "This is the retry test"'
+        }
+        sh 'echo "This is my Deploy step 2"'
+        timeout(time: 2, unit: 'SECONDS') {
+          sh 'echo "This is the timeout test"'
+        }
       }
     }
   }
