@@ -9,33 +9,27 @@ pipeline {
         sh 'echo "This is my first step"'
       }
     }
-    stage("Parallel") {
-      steps {
-        parallel(
-          "Taskone": {
-            sh 'echo "First parallel stuff"'
-          },
-          "Tasktwo": {
-            sh 'echo "Second parallel stuff"'
-          }
-        )
+    when {
+      anyOf {
+        branch 'develop';
+        branch 'test'
       }
     }
     stage('Test') {
+      when {
+        branch 'production'
+        anyOf {
+          environment name: 'DEPLOY_TO', value: 'prod'
+          environment name: 'DEPLOY_TO', value: 'test'
+        }
+      }
       steps {
         sh 'echo "This is my Test step"'
       }
     }
     stage('Deploy') {
       steps {
-        sh 'echo "This is my Deploy step 1"'
-        retry(3) {
-          sh 'echo "This is the retry test"'
-        }
-        sh 'echo "This is my Deploy step 2"'
-        timeout(time: 2, unit: 'SECONDS') {
-          sh 'echo "This is the timeout test"'
-        }
+        sh 'echo "This is my Deploy step"'
       }
     }
   }
