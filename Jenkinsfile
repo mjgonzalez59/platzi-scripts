@@ -11,11 +11,10 @@ pipeline {
     }
     stage('Test') {
       when {
-        not { branch 'production' }
+        not { branch 'master' }
       }
       steps {
         sh 'echo "This is my Test step"'
-        echo branch
       }
     }
     stage('Deploy') {
