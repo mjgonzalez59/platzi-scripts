@@ -11,7 +11,7 @@ pipeline {
     }
     stage('Test') {
       when {
-        branch 'master'
+        not { branch 'production' }
         anyOf {
           environment name: 'DEPLOY_TO', value: 'prod'
           environment name: 'DEPLOY_TO', value: 'test'
