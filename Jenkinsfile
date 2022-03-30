@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
+        sh 'echo "Hey there from GitHub"'
         sh 'echo "This is my first step"'
       }
     }
