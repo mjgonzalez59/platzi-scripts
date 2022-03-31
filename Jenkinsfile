@@ -22,6 +22,7 @@ pipeline {
         anyOf {
           environment name: 'DEPLOY_TO', value: 'test'
           environment name: 'DEPLOY_TO', value: 'develop'
+          environment name: 'DEPLOY_TO', value: 'prod'
         }
       }
       steps {
