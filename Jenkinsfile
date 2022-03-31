@@ -19,7 +19,6 @@ pipeline {
       }
       catch (exc) {
         echo "Something didn't work and got some exceptions"
-        throw
       }
     }
     stage('Deploy') {
