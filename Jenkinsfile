@@ -1,8 +1,7 @@
 pipeline {
-  agent any
-  options {
-    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '15', daysToKeepStr: '', numToKeepStr: '5')
-    disableConcurrentBuilds()
+  agent any  
+  enviroment {
+    DEPLOY_TO = 'prod'
   }
   stages {
     stage('Build') {
@@ -15,10 +14,10 @@ pipeline {
     }
     stage('Test') {
       when {
-        not { branch 'master' }
+        branch 'feature-002' 
       }
       steps {
-        sh 'echo "This is my Test step"'
+        sh 'echo "This is the Test step from feature-002"'
       }
     }
     stage('Deploy') {
