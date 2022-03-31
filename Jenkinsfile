@@ -19,6 +19,10 @@ pipeline {
     stage('Test') {
       when {
         branch 'feature-002' 
+        anyOf {
+          environment name: 'DEPLOY_TO', value: 'test'
+          environment name: 'DEPLOY_TO', value: 'develop'
+        }
       }
       steps {
         sh 'echo "This is the Test step from feature-002"'
