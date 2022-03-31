@@ -17,7 +17,7 @@ pipeline {
           lock label: 'testing-deploy-envs', quantity: 1, variable: 'deployEnvarioment'
       }
       steps {
-        sh 'echo "This is my Test step"'
+        sh 'echo "This is my Test Test Test step"'
       }
     }
     stage('Deploy') {
