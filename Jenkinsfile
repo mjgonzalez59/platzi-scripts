@@ -10,23 +10,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'echo "Hey there from GitHub 1"'
-        sh "echo 'Hey there from GitHub 2'"
-        echo "Hey there from GitHub 3"
-        sh 'echo "This is my first step"'
+        sh 'echo "Hey there from GitHub"'
       }
     }
     stage('Test') {
-      when {
-        branch 'feature-002' 
-        anyOf {
-          environment name: 'DEPLOY_TO', value: 'test'
-          environment name: 'DEPLOY_TO', value: 'develop'
-          environment name: 'DEPLOY_TO', value: 'prod'
-        }
-      }
       steps {
-        sh 'echo "This is the Test step from feature-002"'
+        sh 'printenv'
       }
     }
     stage('Deploy') {
