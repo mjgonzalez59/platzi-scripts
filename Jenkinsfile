@@ -1,7 +1,8 @@
 pipeline {
   agent any  
-  environment {
-    DEPLOY_TO = 'prod'
+  options {
+    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '15', daysToKeepStr: '', numToKeepStr: '5')
+    disableConcurrentBuilds()
   }
   stages {
     stage('Build') {
