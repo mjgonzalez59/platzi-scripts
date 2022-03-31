@@ -4,6 +4,9 @@ pipeline {
     buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '15', daysToKeepStr: '', numToKeepStr: '5')
     disableConcurrentBuilds()
   }
+  environment {
+    DEPLOY_TO = 'prod'
+  }
   stages {
     stage('Build') {
       steps {
