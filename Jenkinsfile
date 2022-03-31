@@ -18,10 +18,10 @@ pipeline {
     }
     stage('Test') {
       when {
-        branch 'feature-002' 
+        not { branch 'master' }
       }
       steps {
-        sh 'echo "This is the Test step from feature-002"'
+        sh 'echo "This is the Test step from master"'
       }
     }
     stage('Deploy') {
