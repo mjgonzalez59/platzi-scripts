@@ -14,11 +14,17 @@ pipeline {
       }
     }
     stage('SampleTryCatch') {
-      try {
-        sh 'exit 1'
-      }
-      catch (exc) {
-        echo "Something didn't work and got some exceptions"
+      steps {
+        script{
+          try {
+            echo 'Code in the try block'
+            sh 'exit 1'
+          }
+          catch (exc) {
+            echo 'Something went wrong and work and got some exceptions'
+            throw exc
+          }
+        }
       }
     }
     stage('Deploy') {
