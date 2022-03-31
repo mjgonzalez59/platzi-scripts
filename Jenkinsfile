@@ -1,5 +1,8 @@
 pipeline {
-  agent any
+  agent any  
+  enviroment {
+    DEPLOY_TO = 'prod'
+  }
   stages {
     stage('Build') {
       steps {
@@ -11,10 +14,10 @@ pipeline {
     }
     stage('Test') {
       when {
-        not { branch 'master' }
+        branch 'feature-002' 
       }
       steps {
-        sh 'echo "This is my Test step"'
+        sh 'echo "This is the Test step from feature-002"'
       }
     }
     stage('Deploy') {
