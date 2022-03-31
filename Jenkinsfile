@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'echo "Hey there from GitHub 11111111111111"'
+        sh 'echo "Hey there from GitHub 1"'
         sh "echo 'Hey there from GitHub 2'"
         echo "Hey there from GitHub 3"
         sh 'echo "This is my first step"'
