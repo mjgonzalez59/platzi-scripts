@@ -21,7 +21,7 @@ pipeline {
         not { branch 'master' }
       }
       steps {
-        sh 'echo "This is the Test step from master"'
+        sh 'echo "This is the Test step from feature-001"'
       }
     }
     stage('Deploy') {
